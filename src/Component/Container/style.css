@@ -1,0 +1,32 @@
+ .container{
+    display: flex;
+}
+.container-header{
+    display:flex;
+    background:rgb(28, 23, 40);
+    align-items:center;
+    gap:40rem;
+    height: 60px;
+    color:whitesmoke;
+    font-weight: 300;
+    font-size: 20px;
+    justify-content: flex-start;
+}
+
+/*.container-sidebar{
+    position: absolute;
+    width: fit-content;
+    background-color: antiquewhite;
+}
+*/
+.container-component{
+    width:90%;
+    background-color:pink; 
+    margin-left: 12.5rem;
+    
+
+
+ } 
+ .container-sidebar{
+    height: 100vh;
+ }

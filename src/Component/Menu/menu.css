@@ -1,0 +1,29 @@
+/* .tool-Bar{
+    display:flex;
+    width:'12.5vw';
+    height: '30px';
+    background-color: 'red';
+} */
+.SideBar li:hover{
+    background-color: rgb(183, 167, 167);
+    color: black;
+}
+
+
+
+.SideBar {
+    width: 12.5rem;
+    color: whitesmoke;
+    position: absolute;
+    height: 100vh;
+    background-color: rgb(28, 23, 40);
+    list-style: none;
+    padding-bottom:1.3rem;
+
+}
+
+.listStyle {
+    font-size: 22px;
+    padding: 1rem 4rem;
+    border-bottom: solid rgba(255, 255, 255, 0.1)1px
+}

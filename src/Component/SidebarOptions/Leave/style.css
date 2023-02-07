@@ -1,0 +1,18 @@
+.main-subcontainer{
+    width:400px;
+    height:100vh;
+    position: absolute;
+    padding:10px;
+
+}
+.main-container{
+    width:100vw;
+    height: 100vh;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.dates{
+    text-align: center;
+    padding-top: 30px;
+}

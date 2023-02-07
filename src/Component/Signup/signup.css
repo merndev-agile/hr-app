@@ -1,0 +1,24 @@
+.main-subcontainer{
+    width:35vw;
+    position: absolute;
+    padding:10px;
+    height: 90vh;
+    padding: 0 2rem;
+}
+.main-container{
+    /* background-image: url(../public/Images/office.jpg); */
+    background-image: linear-gradient(to right,#a1b5cf,#7595bf);
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    overflow: hidden !important;
+    width:100%;
+    /* height: 100%;  */
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    
+}
+.text{
+    margin-top:8px;
+    margin-bottom: 8px;;
+}
