@@ -8,24 +8,13 @@ function ToolBar({isToggleSideBar}){
         <div>
            <div className='tool-Bar'
            style={{
-           
-            // display:'flex',
-            backgroundColor:'rgb(28, 23, 40)',
-            // alignItems:'center',
-            // gap:'2rem',
-            // paddingLeft:'1rem',
-            // color:'whitesmoke',
-            
+            backgroundColor:'rgb(28, 23, 40)',  
            }}
            >
                 <div className='Burger' onClick={isToggleSideBar}>
                 <FcMenu size={'40px'}/>
                 </div>
-                {/* <div>
-                  <h1>
-                  hr-app
-                  </h1>
-                </div> */}
+               
            </div>
         </div>
     )

@@ -13,6 +13,7 @@ import { LoginPage } from './Pages/Login/index'
 import Container from './Component/Container';
 import ValidationPage from './Pages/Validation';
 import { SignupPage } from './Pages/Signup';
+import {EmployeePage} from './Pages/employee';
 // export const employeeContext = React.createContext();
 function App() {
   // const[isauthenticated,setAuthenticated]=React.useState('false');
@@ -38,7 +39,7 @@ function App() {
         <Route path='/signup' element={ <SignupPage/>} />
         <Route path='/home' element={<Container />} >
           <Route path='dashboard' element={<DashBoard />} />
-          <Route path='employeedetails' element={<EmployeeDetails />} />
+          <Route path='employeedetails' element={<EmployeePage />} />
           <Route path='leave' element={<Leave />} />
           <Route path='attendance' element={<Attendence />} />
           <Route path='benifit' element={<Benifit />} />         

@@ -8,21 +8,17 @@ import { FcMenu } from "react-icons/fc";
 // import EmployeeDetails from '../../Pages/employee';
 
 export default function Container() {
-    // const[isSideBar,setSidebar]=React.useState(false);
-    // const[isLoginShow,setIsLoginShow]=React.useState(false);
-    // const[isSignupShow,setIsSignupShow]=React.useState(false);
-    // let { userId } = useParams();
-    // console.log("userParam", userId)
+
     const { state } = useLocation();
     const [containerState, SetcontainerState] = useState({});
     const [isSideBarShow, setIsSideBarShow] = useState('false');
     const isToggleSideBar = () => {
-        
+
         setIsSideBarShow((prevState) => !prevState)
-        console.log("isSideBarShow",isSideBarShow)
+        console.log("isSideBarShow", isSideBarShow)
     }
 
-
+    console.log("state in container", state)
     useEffect(() => {
         SetcontainerState({ ...state });
         console.log('uid in useEffect-----------', containerState);
@@ -36,17 +32,13 @@ export default function Container() {
                 <div className='Burger' onClick={isToggleSideBar}>
                     <FcMenu size={'40px'} />
                 </div>
-                
-                    <h1>
-                        hr-app
-                    </h1>
-               
-
+                <h1>
+                    hr-app
+                </h1>
             </div>
             <div className='container'>
                 <div className='container-sidebar'>
-                    {isSideBarShow && <SideBar  employeeDetails={containerState}/>}
-                    
+                    {isSideBarShow && <SideBar employeeDetails={containerState} />}
                 </div>
                 <div className='container-component'>
                     <Outlet context={[containerState]} />
