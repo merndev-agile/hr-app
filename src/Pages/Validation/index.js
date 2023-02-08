@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from "yup";
@@ -45,7 +45,7 @@ export default function ValidationPage() {
         console.log("valid", valid, "value", value);
         if (!valid) {
             // @todo: bug here? valid only correct after submitting
-          
+
             return;
         }
 
@@ -73,7 +73,7 @@ export default function ValidationPage() {
                         onChange={({ target: { value } }) => {
                             onChange(value);
                             onNameChange(value);
-                            
+
                         }}
                         placeholder="Enter a pokemon"
                         variant="outlined"
@@ -81,7 +81,7 @@ export default function ValidationPage() {
                         error={Boolean(errors && errors.name)}
                         helperText={(errors && errors.name && errors.name.message)}
                         inputRef={ref}
-                        
+
 
                     />
                 )}
@@ -89,7 +89,7 @@ export default function ValidationPage() {
             />
 
             <button type="submit"
-           >
+            >
                 Show Pokemon
             </button>
             {errors.name && <p>{errors.name.message}</p>}

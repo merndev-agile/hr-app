@@ -35,7 +35,7 @@ function Signup() {
                 console.log("user", user);
                 await updateProfile(user, { displayName: credential.companyName, photoURL: credential.file })
                 createUserCollection(user, credential.password, credential.role);
-                navigate('/home',  { state: { uid: user.uid, name: user.displayName, role: credential.role } })
+                navigate('/home', { state: { uid: user.uid, name: user.displayName, role: credential.role } })
             })
             .catch((err) => {
                 console.log(err)
