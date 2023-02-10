@@ -20,43 +20,75 @@
     width:100%;
 
 } */
-.form{
+/* .form{
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
    
 
-}
+} */
+/**
+        Progress Bar starts----------------------------------------->
+ */
 .progressbar{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left:30% ;
-    /* margin-top: 5%; */
-    width:40%;
-    background-color:#fff;
-    height: 40px;
-    box-shadow: 0 2px 4px 0 rgb(0 0 0/20%);
-    border-radius:2px;
-    
+     position: relative;
+     display: flex;
+     justify-content: space-between;
+     counter-reset: step;
+     margin-top: 1rem ;
+     margin-bottom: 3rem;
 }
-.employee-Btn{
-    margin-right: 1.5rem !important;
-}
-.main-subcontainer1{
-    /* width:35vw; */
-    width:400px;
+.progressbar::before{
+    content: "";
+    height: 5px;
+    width: 100%;
     position: absolute;
-    padding:10px;
-    /* height: 90vh;
-    padding: 0 2rem; */
+    top:50%;
+    /* transform: translate(-50%); */
+    background-color: #dcdcdc;
+    /* z-index: -1; */
 }
-.main-container1{
-    height:78vh;
-    
+.progress-step{
+    width: 2.185em;
+    height: 2.185em;
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    z-index: 9999;
 }
-.employeeTextField{
-    margin-bottom:10px !important;
-    /* width: 50vw  !important; */
+.progress-step::before{
+    counter-increment: step;
+    content: counter(step);
+}
+.progress-step::after{
+   content: attr(data-title);
+   top: calc(100% + 0.75rem);
+   position: absolute;
+   font-size: 0.85rem;
+   color: #666;
+   font-weight: 600;
+}
+.progress-step-active{
+    background-color: #2874fb;
+    color: #f3f3f3;
+}
+
+/* Form heading--------------------------------*/
+.form-header{
+    text-align: center;
+}
+
+
+/**   Footer starts-------------------------------------------> */
+.footer{
+    display: flex;
+    justify-content: space-around;
+}
+.MuiButton-containedPrimary {
+    color: #fff;
+    background-color: #3f51b5;
+    width: 12%;
 }
