@@ -59,7 +59,7 @@ const createUserCollection = async (user, password, role) => {
  * @param {*} employee 
  */
 const createEmployeeCollection = async (employee) => {
-  console.log(employee)
+  console.log('employye==>',employee)
   let obj = { ...employee }
   console.log("emp_id",employee.uid)
   console.log("employee", employee.uid);
@@ -127,6 +127,20 @@ const getDatafromUserCollection = async (setAllEmp) => {
 }
 
 
+const createHolidayDataCollection = async (holiday) => {
+  console.log("holid", holiday);
+  let obj = {...holiday};
+  console.log("holid2", obj)
+  const collection = firebase.firestore().collection('holiday');
+  console.log("------------")
+  let response = await collection.doc().set({...obj}).catch((err) => {
+    console.log("errorholi", err)
+  })
+  console.log("resholi", response)
+
+}
+
+
 /**
  * this function return single employee info based on uid from employee collection
  * @param {*} uid 
@@ -156,6 +170,10 @@ const getSingleEmpInfo = async (uid,setPost) => {
   })
   console.log("single emp-----------",singleEmp);
   setPost(singleEmp)
+
+
+ 
+
   
 }
-export { app, auth, db, createUserCollection, getSingleEmpInfo,createEmployeeCollection, createLeaveDataCollection, createAttendanceDataCollection, getDatafromUserCollection };
+export { app, auth, db, createUserCollection, getSingleEmpInfo,createEmployeeCollection, createLeaveDataCollection, createAttendanceDataCollection, getDatafromUserCollection, createHolidayDataCollection};

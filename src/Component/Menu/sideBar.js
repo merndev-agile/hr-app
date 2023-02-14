@@ -25,6 +25,7 @@ function SideBar(props) {
                 <li className='listStyle' onClick={() => navigate('/home/attendance')}>Attendence</li>
                 <li className='listStyle' onClick={() => navigate('/home/leave')}>Leave</li>
                 <li className='listStyle' onClick={() => navigate('/home/benifit')}>Benifit</li>
+                <li className='listStyle' onClick={() => navigate('/home/ListedHolidays')}>List of Holidays</li>
             </div>
         </div>
     )

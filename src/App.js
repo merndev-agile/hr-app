@@ -14,6 +14,7 @@ import Container from './Component/Container';
 import ValidationPage from './Pages/Validation';
 import { SignupPage } from './Pages/Signup';
 import {EmployeePage} from './Pages/employee';
+import ListedHolidays from './Component/SidebarOptions/ListedHolidays';
 // export const employeeContext = React.createContext();
 function App() {
   // const[isauthenticated,setAuthenticated]=React.useState('false');
@@ -42,7 +43,9 @@ function App() {
           <Route path='employeedetails' element={<EmployeePage />} />
           <Route path='leave' element={<Leave />} />
           <Route path='attendance' element={<Attendence />} />
-          <Route path='benifit' element={<Benifit />} />         
+          <Route path='benifit' element={<Benifit />} />  
+          <Route path='ListedHolidays' element={<ListedHolidays />} />  
+                 
         </Route>
         <Route path='validation' element={<ValidationPage />} />
       </Routes>

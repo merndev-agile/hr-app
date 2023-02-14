@@ -40,10 +40,13 @@ export default function Attendance() {
     const handleSubmit = (e) => {
         //    console.log("LeaveData",leaveData);
         let obj = { ...attendance }
+      
         let uid = containerState.uid;
         let storedData = {
         }
         storedData[uid] = [obj];
+
+        console.log('storeddata==>',storedData)
         setAttendance({ ...attendance, employeeName: containerState.name, employeeId: containerState.uid, workType: workingType, time: new Date().toLocaleString() })
         createAttendanceDataCollection(storedData);
         setIslogin(true)
