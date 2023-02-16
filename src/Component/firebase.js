@@ -6,7 +6,7 @@ import firebase from 'firebase/compat/app';
 import { getAuth } from "firebase/auth";
 import 'firebase/compat/firestore';
 import { getFirestore } from 'firebase/firestore';
-import { doc, setDoc, addDoc, collection,query, getDocs } from "firebase/firestore";
+import {  addDoc, collection,query, getDocs} from "firebase/firestore";
 
 
 /**
@@ -98,7 +98,7 @@ const createAttendanceDataCollection = async (attendanceData) => {
   let obj = { ...attendanceData };
   console.log("att", obj)
   const collection = firebase.firestore().collection('AttendanceData');
-  let response = await collection.doc().set({ ...obj }).catch((err) => {
+  let response = await (await collection.add()).set({ ...obj }).catch((err) => {
     console.log("error", err)
   })
   console.log("res", response)
@@ -127,18 +127,8 @@ const getDatafromUserCollection = async (setAllEmp) => {
 }
 
 
-const createHolidayDataCollection = async (holiday) => {
-  console.log("holid", holiday);
-  let obj = {...holiday};
-  console.log("holid2", obj)
-  const collection = firebase.firestore().collection('holiday');
-  console.log("------------")
-  let response = await collection.doc().set({...obj}).catch((err) => {
-    console.log("errorholi", err)
-  })
-  console.log("resholi", response)
 
-}
+
 
 
 /**
@@ -176,4 +166,4 @@ const getSingleEmpInfo = async (uid,setPost) => {
 
   
 }
-export { app, auth, db, createUserCollection, getSingleEmpInfo,createEmployeeCollection, createLeaveDataCollection, createAttendanceDataCollection, getDatafromUserCollection, createHolidayDataCollection};
+export { app, auth, db, firestore, createUserCollection,  getSingleEmpInfo,createEmployeeCollection, createLeaveDataCollection, createAttendanceDataCollection, getDatafromUserCollection};

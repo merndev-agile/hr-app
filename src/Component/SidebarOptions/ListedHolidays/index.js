@@ -1,18 +1,17 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { createHolidayDataCollection } from '../../firebase';
+
 import './index.css'
 import Paper from '@material-ui/core/Paper';
 import { TextField, Button } from '@material-ui/core';
-import 'react-calendar/dist/Calendar.css';
-import { Calendar } from 'react-calendar';
-import moment from 'moment';
+import Input from './Input/Input';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { firestore } from '../../firebase';
 
 
 const useStyles = makeStyles({
@@ -77,77 +76,45 @@ export default function ListedHolidays() {
 
   const classes = useStyles();
 
-  const [todo, setTodo] = useState([{ value: '26/01/2023', occassion: 'Republic Day' },
-  { value: '15/08/2023', occassion: 'Independence Day' },
-  { value: '02/10/2023', occassion: 'Gandhi Jayanti' },
-  { value: '25/12/2023', occassion: 'Christmas Day' }])
+  const [todo, setTodo] = useState([])
 
-  const [value, setValue] = React.useState(new Date());
-  const [occassion, setOccassion] = React.useState('');
+ 
 
+  //   React.useEffect(() => {
 
+  //     async function fetchData() {
 
+  //             await getHolidayDataCollection(setTodo)
 
-  const handleDateChange = (data) => {
-    const hy = moment(data).format('DD/MM/YYYY')
-    setValue(hy);
+  //     }
+  //    fetchData()
 
-  }
-
-  const handleAdd = (e) => {
+  // }, [])
 
 
+
+ 
 
 
 
 
+ 
 
-    e.preventDefault()
-    setTodo([...todo, { value, occassion }])
-    setValue(new Date())
-    setOccassion('')
-
-  }
-
-  useEffect(() => {
-    let obj = { ...todo }
-    console.log('holiday==sss>', obj)
-    createHolidayDataCollection(obj);
-  }, [handleAdd])
-
-  console.log('todo=>', todo)
-
-  console.log('value', value)
-  console.log('value2', occassion)
-
-  const handleDeleteHoliday = index => {
-    const newTodo = [...todo];
-    newTodo.splice(index, 1);
-    setTodo(newTodo);
-  };
+ 
 
 
-  const sortedData = todo.sort((a, b) => {
-    const [dayA, monthA, yearA] = a.value.split("/");
-    const [dayB, monthB, yearB] = b.value.split("/");
-    const dateA = new Date(yearA, monthA - 1, dayA);
-    const dateB = new Date(yearB, monthB - 1, dayB);
-    return dateA - dateB;
-  });
+
+ 
 
 
 
   return (
     <Paper >
 
-      < div className='edit'>
-        <Calendar className={classes.calendar} data-testid="mocked-calendar" onChange={handleDateChange} />
-        <TextField id="outlined-basic" label="Occassion" variant="outlined" className={classes.TextField} value={occassion} onChange={(e) => setOccassion(e.target.value)} />
-        <div className='buttons'>
-          <Button className={classes.button} data-testid="add-btn" onClick={handleAdd} >Add</Button>
 
-        </div>
-      </div>
+     <Input todo ={todo} setTodo={setTodo} />
+
+
       <Paper className={classes.root}>
         <h2>List Of Holidays</h2>
         <Table className={classes.table} aria-label="simple table">
@@ -159,16 +126,16 @@ export default function ListedHolidays() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {sortedData.map((item, index) => (
-              <TableRow key={item.index}>
+            {todo.map((item, index) => (
+              <TableRow key={item.id}>
                 <TableCell component="th" scope="row" align='center'>
-                  {item.occassion}
+                  {item.todo.occassion}
                 </TableCell>
-                <TableCell align='center'>{item.value}</TableCell>
+                <TableCell align='center'>{item.todo.value}</TableCell>
                 <TableCell align='center' >
                   <Button
                     className={classes.button}
-                    onClick={() => handleDeleteHoliday(index)}
+                    onClick={(e) => firestore.collection('holidays').doc(item.id).delete()}
                   >
                     Delete
                   </Button>

@@ -5,11 +5,6 @@ import { fireEvent, render,screen } from '@testing-library/react';
 
 
 
-
-
-
-
-
 it('should render the input component', () => {
     render(<ListedHolidays />);
     const inputText = screen.getByLabelText('Occassion');
