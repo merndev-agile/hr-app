@@ -49,6 +49,17 @@
     background-color: #dcdcdc;
     /* z-index: -1; */
 }
+.progressbar0::before{
+    content: "";
+    height: 5px;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    /* transform: translate(-50%); */
+    background-color: #2874fb;
+    /* z-index: -1; */
+}
+
 .progress-step{
     width: 2.185em;
     height: 2.185em;
@@ -74,6 +85,17 @@
 .progress-step-active{
     background-color: #2874fb;
     color: #f3f3f3;
+}
+.progressbar-active::before{
+    content: "";
+    height: 5px;
+    width: 50%;
+    position: absolute;
+    top:50%;
+    /* transform: translate(-50%); */
+    /* background-color: #dcdcdc; */
+    background-color:#2874fb;
+    /* z-index: -1; */
 }
 
 /* Form heading--------------------------------*/

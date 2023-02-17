@@ -6,8 +6,14 @@ import { Grid, Paper, Typography, Link, FormControlLabel, Checkbox, Button } fro
 import './style.css';
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
+import moment from 'moment';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 export default function personalInfo({ employeeInformation, setEmployeeInformation, setIsDisable, isDisable, page }) {
     const [containerState] = useOutletContext();
+    const [date, setDate] = React.useState();
+    const [focus, setFocus] = React.useState(false);
+
     const { register, handleSubmit, formState: { errors }, control, trigger } = useForm({
         defaultValues: {
             name: false
@@ -26,14 +32,21 @@ export default function personalInfo({ employeeInformation, setEmployeeInformati
     const onSubmit = async (data, e) => {
         employeeInformation.personalInfo = data;
         setEmployeeInformation((curr) => ({ ...curr, ...employeeInformation }))
+        console.log(employeeInformation.personalInfo.dob, ":::::::in Onsubmit")
     };
+    let dateValue;
     return (
-        
+
         <Grid >
             <div  >
                 <form onSubmit={handleSubmit(data => {
-                    setIsDisable((curr)=>true)
-                    onSubmit(data)
+                    data.dob = date;
+                    console.log("dateof Dob", data.dob);
+                    console.log("stateDate-----", date)
+                    setIsDisable((curr) => true)
+                    onSubmit(data);
+                    console.log("dataIn FOrm submit", data)
+                    console.log("date", date)
                 })}>
                     <Controller
                         name="name"
@@ -199,19 +212,41 @@ export default function personalInfo({ employeeInformation, setEmployeeInformati
                                 onChange={({ target: { value } }) => {
                                     onChange(value);
                                     onNameChange(value);
+                                    console.log("ValueInOnchange", value)
+                                    // dateValue=moment(value).format('DD/MM/YYYY');
+                                    // console.log("dataValueInOnchange",dateValue)
+                                    setDate(value)
                                 }}
                                 placeholder="Enter your  name"
-                                defaultValue={employeeInformation.personalInfo.dob && employeeInformation.personalInfo.dob.toISOString().slice(0, 10)}
+                                defaultValue={employeeInformation.personalInfo.dob}
                                 variant="outlined"
-                                label="DOB"
-                                type="date"
+                                type={focus ? 'date' : 'text'}
                                 // error={Boolean(errors && errors.name)}
                                 // helperText={(errors && errors.name && errors.name.message)}
                                 inputRef={ref}
+                                onFocus={()=>setFocus(true)}
                                 style={{ marginBottom: 8, marginBottom: 8 }}
+                                label='Date of Birth'
                             />
+                            // <DatePicker
+
+                            //     selected={dateValue}
+                            //     onChange={(e) => {
+                            //         console.log("e--",e)
+                            //         dateValue=moment(e).format('MMMM Do YYYY');
+                            //         console.log("dateValueInPicker-",dateValue)
+                            //         setDate(dateValue)
+                            //     }
+                            //     }
+                            //     value={dateValue}
+
+                            // />
                         )}
                     />
+
+
+
+
                     <Button disabled={isDisable && page === 0} color='primary' variant="contained" type='submit'>submit</Button>
                 </form>
             </div>

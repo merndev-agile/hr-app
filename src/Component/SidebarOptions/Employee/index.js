@@ -25,7 +25,8 @@ export default function EmployeeDetails(props) {
         uid: containerState.uid
     });
     const formHeading = ["Personal Information", "Educational Information", "Designation"];
-
+    console.log("eMPINFO--",employeeInformation.personalInfo.dob)
+    
     /**
      * 
      * @returns Form Page
@@ -79,11 +80,11 @@ export default function EmployeeDetails(props) {
             <Box>
 
                 <Box style={{ borderColor: 'red' }}>
-                    <Box className='progressbar' >
+                    <Box className='progressbar'  >
                         {/* <Box style={{ width: page == 0 ? "33.3%" : page == 1 ? "66.6%" : "100%", backgroundColor: page == 2 ? "blue" : "red", height: '7px' }}></Box> */}
-                        <Box className='progress-step progress-step-active' data-title='Personal'></Box>
-                        <Box className='progress-step ' data-title='Education'></Box>
-                        <Box className='progress-step ' data-title='Designation'></Box>
+                        <Box className={page === 0 ?'progress-step  progress-step-active':'progress-step'} data-title='Personal'></Box>
+                        <Box className={page === 1 ?'progress-step progress-step-active':'progress-step'} data-title='Education'></Box>
+                        <Box className={page === 2 ?'progress-step progress-step-active':'progress-step'} data-title='Designation'></Box>
                     </Box>
                     <Box >
                         <Box>
