@@ -39,6 +39,7 @@ export default function AppRoutes() {
                 <Route path='/' element={<LoginPage isAuth={isAuth} setAuth={setAuth} />} />
                 <Route path='/signup' element={<SignupPage />} />
                 <Route element={<ProtectedRoute auth={isAuth} path='/home' />}>
+                    
                     <Route path='/home' element={<Container />}  >
                         <Route path='dashboard' element={<DashBoard />} />
                         <Route path='employeedetails' element={<EmployeePage />} />
