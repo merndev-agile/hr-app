@@ -217,7 +217,7 @@ function Signup() {
                     <Button color='primary' variant="contained" type="submit" style={btnStyle} text='Sign up' />
                     <Typography>
                         Already have an account?
-                        <Link href='/login' >Sign in</Link>
+                        <Link href='/' >Sign in</Link>
                     </Typography>
                     {/* <button onClick={() => console.log("credential", credential)}>data</button> */}
 

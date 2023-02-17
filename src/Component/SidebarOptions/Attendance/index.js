@@ -5,20 +5,6 @@ import { Grid, Paper, TextField, InputLabel, MenuItem, Select, Typography, Butto
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
-
-// export default function Attendance(){
-//     const [ containerState] = useOutletContext(); 
-
-//     return(
-//         <div>
-//         Attendance
-//         {console.log("BeniftContainerState",containerState)}
-
-//         </div>
-//     )
-// }
-
-
 export default function Attendance() {
     const [workingType, setWorkingType] = React.useState('Work from Home');
     const [status, setstatus] = React.useState('You are logged In');
@@ -34,11 +20,9 @@ export default function Attendance() {
     });
 
     const [containerState] = useOutletContext();
-    // console.log(new Date().toLocaleString())
     console.log(" containerState in attendence", containerState)
 
     const handleSubmit = (e) => {
-        //    console.log("LeaveData",leaveData);
         let obj = { ...attendance }
         let uid = containerState.uid;
         let storedData = {
@@ -55,10 +39,7 @@ export default function Attendance() {
         })
     }
     const handleChange = (e) => {
-        console.log("handleChange", e.target.value);
         setWorkingType(e.target.value);
-        // let obj={...attendance}
-        console.log("attendance", attendance)
     }
     React.useEffect(() => {
         setAttendance({ ...attendance, employeeName: containerState.name, employeeId: containerState.uid, workType: workingType, time: new Date().toLocaleString() })
@@ -99,7 +80,6 @@ export default function Attendance() {
                 </FormControl>
                 <Grid>
                     <Button disabled={islogin} color='primary' variant="contained" onClick={handleSubmit} >login</Button>
-                    {/* <button onClick={() => console.log("DATA ATTENDENCE", attendance)}>data</button> */}
                 </Grid>
 
             </Paper>

@@ -2,16 +2,14 @@
 import * as React from 'react';
 import { useOutletContext } from "react-router-dom";
 import TextField from '../../generic/TextField';
-import { Grid, Paper, Typography, Link, FormControlLabel, Checkbox } from '@material-ui/core';
+import { Grid, Paper, Typography, Link, FormControlLabel, Checkbox, Box, Button } from '@material-ui/core';
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { educationalInfoSchema } from '../../../Pages/employee/index';
 
 
-export default function EducationalInfo({ employeeInformation, setEmployeeInformation }) {
+export default function EducationalInfo({ employeeInformation, setEmployeeInformation, setIsDisable1, isDisable1, page }) {
     const [containerState] = useOutletContext();
-    console.log("employeeInformation PersonalInfo", employeeInformation)
-
     const { register, handleSubmit, formState: { errors }, control, trigger } = useForm({
         defaultValues: {
             name: false
@@ -21,30 +19,24 @@ export default function EducationalInfo({ employeeInformation, setEmployeeInform
     const onNameChange = async (value) => {
         // Trigger is used to target an element 
         const valid = await trigger("name");
-        console.log("valid", valid, "value", value);
         if (!valid) {
             // @todo: bug here? valid only correct after submitting
             return;
         }
-
     };
 
     const onSubmit = async (data, e) => {
-        console.log("submitted ", data);
         employeeInformation.educationalInfo = data;
-        console.log(employeeInformation);
         setEmployeeInformation((curr) => ({ ...curr, ...employeeInformation }))
-
     };
-    const ref = React.useRef()
 
     return (
 
-        <Grid className='main-container1'>
-            <Paper elevation={10} sx={{ padding: '5rem' }} className='main-subcontainer1'>
+        <Box >
+            <Box >
                 <form onSubmit={handleSubmit(data => {
-                    console.log("data-----------------", data)
-                    onSubmit(data)
+                    onSubmit(data);
+                    setIsDisable1(true)
                 })}>
                     <Controller
                         name="highschool"
@@ -61,6 +53,7 @@ export default function EducationalInfo({ employeeInformation, setEmployeeInform
                                 variant="outlined"
                                 label="10th"
                                 type="date"
+                                defaultValue={employeeInformation.educationalInfo.highschool }
 
                                 // error={Boolean(errors && errors.name)}
                                 // helperText={(errors && errors.name && errors.name.message)}
@@ -86,15 +79,13 @@ export default function EducationalInfo({ employeeInformation, setEmployeeInform
                                 variant="outlined"
                                 label="12th"
                                 type="date"
-
+                                defaultValue={employeeInformation.educationalInfo.intermediate}
                                 // error={Boolean(errors && errors.name)}
                                 // helperText={(errors && errors.name && errors.name.message)}
                                 inputRef={ref}
                                 style={{ marginBottom: 8, marginBottom: 8 }}
-
                             />
                         )}
-
                     />
                     <Controller
                         name="bachelor"
@@ -111,15 +102,13 @@ export default function EducationalInfo({ employeeInformation, setEmployeeInform
                                 variant="outlined"
                                 label="Bachelor Degree"
                                 type="date"
-
+                                defaultValue={employeeInformation.educationalInfo.bachelor}
                                 // error={Boolean(errors && errors.name)}
                                 // helperText={(errors && errors.name && errors.name.message)}
                                 inputRef={ref}
                                 style={{ marginBottom: 8, marginBottom: 8 }}
-
                             />
                         )}
-
                     />
                     <Controller
                         name="master"
@@ -136,22 +125,17 @@ export default function EducationalInfo({ employeeInformation, setEmployeeInform
                                 variant="outlined"
                                 label="Master Degree"
                                 type="date"
-
+                                defaultValue={employeeInformation.educationalInfo.master}
                                 // error={Boolean(errors && errors.name)}
                                 // helperText={(errors && errors.name && errors.name.message)}
                                 inputRef={ref}
                                 style={{ marginBottom: 8, marginBottom: 8 }}
-
                             />
                         )}
-
                     />
-                    <button type='submit'>submit</button>
-
+                    <Button color='primary' disabled={isDisable1 && page ===1} variant="contained"  type='submit'>submit</Button>
                 </form>
-            </Paper>
-
-        </Grid>
-
+            </Box>
+        </Box>
     )
 }
