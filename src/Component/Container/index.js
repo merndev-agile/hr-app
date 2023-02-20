@@ -10,6 +10,7 @@ import { FcMenu } from "react-icons/fc";
 export default function Container() {
 
     const { state } = useLocation();
+    
     const [containerState, SetcontainerState] = useState({});
     const [isSideBarShow, setIsSideBarShow] = useState('false');
     const isToggleSideBar = () => {

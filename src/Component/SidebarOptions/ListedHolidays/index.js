@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-
 import './index.css'
 import Paper from '@material-ui/core/Paper';
-import { TextField, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import Input from './Input/Input';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -73,47 +72,37 @@ const useStyles = makeStyles({
 });
 
 export default function ListedHolidays() {
+  const [role, setRole] = useState("");
+
 
   const classes = useStyles();
 
   const [todo, setTodo] = useState([])
 
- 
 
-  //   React.useEffect(() => {
+  useEffect(() => {
 
-  //     async function fetchData() {
+    firestore.collection('holidays').orderBy("timestamp", "asc").onSnapshot(
+      snapshot => {
+        setTodo(snapshot.docs.map(doc => ({
+          id: doc.id,
+          todo: doc.data().todo,
+        })))
+      }
+    )
 
-  //             await getHolidayDataCollection(setTodo)
+    const roleValue = localStorage.getItem('role');
+    console.log('rolevalue', roleValue, typeof (roleValue))
+    setRole(roleValue);
 
-  //     }
-  //    fetchData()
-
-  // }, [])
-
-
-
- 
-
-
-
+  }, [])
 
  
-
- 
-
-
-
- 
-
-
 
   return (
-    <Paper >
+    <Paper>
 
-
-     <Input todo ={todo} setTodo={setTodo} />
-
+      {role === '"Admin"' && <Input todo={todo} setTodo={setTodo} />}
 
       <Paper className={classes.root}>
         <h2>List Of Holidays</h2>
@@ -133,12 +122,14 @@ export default function ListedHolidays() {
                 </TableCell>
                 <TableCell align='center'>{item.todo.value}</TableCell>
                 <TableCell align='center' >
-                  <Button
-                    className={classes.button}
-                    onClick={(e) => firestore.collection('holidays').doc(item.id).delete()}
-                  >
-                    Delete
-                  </Button>
+                {
+                  role==='"Admin"' && <Button
+                  className={classes.button}
+                  onClick={(e) => firestore.collection('holidays').doc(item.id).delete()}
+                >
+                  Delete
+                </Button>
+                }
                 </TableCell>
               </TableRow>))
             }

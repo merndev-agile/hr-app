@@ -197,20 +197,7 @@ function Signup() {
 
                     />
 
-                    <select name="cars" id="cars"
-                        onChange={(e) => {
-                            console.log("selectedVal", e.target.value)
-                            setCredential((curr) => ({
-                                ...curr,
-                                role: e.target.value
-                            }))
-
-                        }}>
-
-                        <option value="Role">Role</option>
-                        <option value="Admin">Admin</option>
-                        <option value="User">User</option>
-                    </select>
+                    
 
 
 

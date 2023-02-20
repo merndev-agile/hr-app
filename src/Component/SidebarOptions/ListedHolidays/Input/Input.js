@@ -73,6 +73,8 @@ const Input = ({todo,setTodo}) => {
     const [value, setValue] = React.useState(new Date());
     const [occassion, setOccassion] = React.useState('');
 
+   
+
 
     const handleDateChange = (data) => {
         const hy = moment(data).format('DD/MM/YYYY')
@@ -95,18 +97,7 @@ const Input = ({todo,setTodo}) => {
          setOccassion('')
       }
     
-      useEffect(() => {
-        firestore.collection('holidays').orderBy("timestamp","desc").onSnapshot(
-          snapshot => {
-            console.log(snapshot);
-            setTodo(snapshot.docs.map(doc => ({
-              id:doc.id,
-              todo:doc.data().todo,
-              
-            })))
-          }
-        )
-    },[])
+
     
     console.log('todo=>', todo)
   return (

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth, } from '../firebase.js';
+import { auth } from '../firebase.js';
 import { useNavigate } from 'react-router-dom';
 import './style1.css';
 import { Grid, Paper, Typography, Link, FormControlLabel, Checkbox } from '@material-ui/core';
-import LoginPage from '../../Pages/Login/index';
 import TextField from '../generic/TextField/index';
 import Button from '../generic/Button/index';
 import Swal from 'sweetalert2'
@@ -50,12 +49,17 @@ function Login() {
     //     }
     //     return (error);
     // }
-    const loginValidationWithFirebase = async ({ userEmail, password, role }) => {
+   const loginValidationWithFirebase = async ({ userEmail, password, role }) => {
 
         console.log("email", userEmail);
         // console.log("name", credential.name);
         console.log("password", password);
         // setLoginButtonDisabled(true);
+        console.log ('role0',role)
+        
+        localStorage.setItem('role', JSON.stringify(role));
+        console.log("22222 role=>", role)
+          
         await signInWithEmailAndPassword(auth, userEmail, password)
             .then(async (res) => {
                 console.log(res);

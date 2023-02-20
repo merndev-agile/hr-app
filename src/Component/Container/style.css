@@ -20,12 +20,9 @@
 }
 */
 .container-component{
-    width:90%;
+    width:100%;
     background-color:pink; 
-    margin-left: 12.5rem;
-    
-
-
+  
  } 
  .container-sidebar{
     height: 100vh;
