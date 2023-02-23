@@ -5,6 +5,7 @@ import moment from 'moment';
 
 const AttendanceCalendar = ({selectedDate,setSelectedDate}) => {
     
+  const maxDate = new Date(); 
 
     const handleDateChange = (date) => {
         const hy = moment(date).format('DD-MM-YYYY');
@@ -13,7 +14,7 @@ const AttendanceCalendar = ({selectedDate,setSelectedDate}) => {
   return (
     <div>
       <h3>Select a date:{selectedDate}</h3>
-      <Calendar  onChange={handleDateChange} />
+      <Calendar  onChange={handleDateChange} maxDate={maxDate}/>
     </div>
   )
 }

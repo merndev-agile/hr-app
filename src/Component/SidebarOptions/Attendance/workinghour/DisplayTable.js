@@ -1,24 +1,43 @@
 import React from 'react'
 import { Typography,Card, CardContent} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles({
+card:{
+  marginTop:"1rem",
+  width: '300px',
+  height: '350px',
+  textAlign: 'center',
+  display: 'flex',
+  flexDirection:'column',
+ justifyContent:'center',
+  
+}
+  
+});
 
 const DisplayTable = ({todo,selectedDate}) => {
+  const classes = useStyles();
+ 
   return (
     <div>{
-        todo.map((item)=>{
+       todo.length===1? todo.map((item)=>{
           return (
             <>
-        <Card sx={{ maxWidth: 600, m: 'auto', mt: 5, p: 3, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' }}>
-      <CardContent>
-        <Typography variant="h5" sx={{ mb: 3 }}>{selectedDate}</Typography>
-        <Typography variant="h6" sx={{ mb: 2 }}>Login time: {item.loginTime}</Typography>
-        <Typography variant="h6" sx={{ mb: 2 }}>Logout time: {item.logoutTime}</Typography>
-        <Typography variant="h6" sx={{ mb: 2 }}>Total hours: {item.totalHours}</Typography>
+        <Card className={classes.card}key={item.id} style={item.hoursLeft===0?{backgroundColor:"linear-gradient(45deg, #2DD6AB 30%, #41AF93 90%)"}:{background:"linear-gradient(to bottom, #f44336, #ff9800, #ffe0b2)"}}>
+      <CardContent >
+        <Typography >{selectedDate}</Typography>
+        <Typography >Login time: {item.loginTime}</Typography>
+        <Typography >Logout time: {item.logoutTime}</Typography>
+        <Typography >Total hours: {item.hoursWorked}</Typography>
+        <Typography >remaing hours: {item.hoursLeft}</Typography>
       </CardContent>
     </Card>
             
             </>
           )
-        })
+        }):<Card className={classes.card}>There is no data for Date : {selectedDate}</Card>
       }</div>
   )
 }
