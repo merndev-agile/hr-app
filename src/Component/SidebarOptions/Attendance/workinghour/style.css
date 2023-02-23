@@ -1,0 +1,16 @@
+.login-logout-times {
+    margin-top: 50px;
+    display: flex;
+   
+    align-items: center;
+  }
+  
+  .buttons-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .time-field {
+    margin-left: 20px;
+  }

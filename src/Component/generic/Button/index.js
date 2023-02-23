@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Button} from '@material-ui/core';
- const Buttons=(props)=>{
+ const Buttons=React.forwardRef((props, ref)=>{
     return(
         <Button {...props} >{props.text}</Button>
 
@@ -8,5 +8,5 @@ import {Button} from '@material-ui/core';
 
     )
 
-}
+})
 export default Buttons;

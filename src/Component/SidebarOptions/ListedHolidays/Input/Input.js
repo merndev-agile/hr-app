@@ -2,7 +2,6 @@ import React from 'react'
 import { TextField, Button } from '@material-ui/core';
 import 'react-calendar/dist/Calendar.css';
 import { Calendar } from 'react-calendar'
-import { useState, useEffect } from 'react';
 import firebase from 'firebase/compat';
 import { firestore } from '../../../firebase';
 

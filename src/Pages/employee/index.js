@@ -1,10 +1,6 @@
 import React from 'react';
 import * as Yup from "yup";
 import EmployeeDetails from '../../Component/SidebarOptions/Employee/index';
-
-
-
-
 const personalInfoSchema = Yup.object({
        name: Yup.string().required(),
        email: Yup.string().email("Email is invalid").required("Please enter user Email"),

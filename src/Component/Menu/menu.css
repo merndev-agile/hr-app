@@ -4,12 +4,10 @@
     height: '30px';
     background-color: 'red';
 } */
-.SideBar li:hover{
+.SideBar li:hover {
     background-color: rgb(183, 167, 167);
     color: black;
 }
-
-
 
 .SideBar {
    
@@ -18,7 +16,7 @@
     height: 100%;
     background-color: rgb(28, 23, 40);
     list-style: none;
-    padding-bottom:1.3rem;
+    padding-bottom: 1.3rem;
 
 }
 
