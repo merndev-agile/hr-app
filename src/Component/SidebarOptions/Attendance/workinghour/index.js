@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
-import AttendanceCalendar from './AttendanceCalendar'
-import LoginLogoutTimes from './LoginLogoutTimes'
-import Card from './DisplayTable'
+import AttendanceCalendar from './attendanceCalendar/AttendanceCalendar'
+import LoginLogoutTimes from './loginLogoutTimes/LoginLogoutTimes'
+import Card from './displayTable/DisplayTable'
 import './style.css'
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../../firebase'

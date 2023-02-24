@@ -14,7 +14,7 @@ const AttendanceCalendar = ({selectedDate,setSelectedDate}) => {
   return (
     <div>
       <h3>Select a date:{selectedDate}</h3>
-      <Calendar  onChange={handleDateChange} maxDate={maxDate}/>
+      <Calendar  onChange={handleDateChange} maxDate={maxDate} data-testid="mocked-calendar"/>
     </div>
   )
 }

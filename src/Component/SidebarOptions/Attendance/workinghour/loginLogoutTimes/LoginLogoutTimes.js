@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
 import moment from 'moment';
-import "./style.css"
 import firebase from 'firebase/compat';
-import { firestore } from '../../../firebase'
+import { firestore } from '../../../../firebase'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -69,7 +68,7 @@ const LoginLogoutTimes = ({loginTime,setLoginTime,logoutTime,setLogoutTime,hours
           logoutTime,
           hoursWorked: hours,
           hoursLeft:hoursDifference,
-          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+         
         })
         setLoginTime('')
         setLogoutTime('')
@@ -82,7 +81,7 @@ const LoginLogoutTimes = ({loginTime,setLoginTime,logoutTime,setLogoutTime,hours
     <div className='buttons-container '>
     <h3>Login/Logout Times:</h3>
     <div >
-      <Button variant="contained" color="primary" className={classes.button} onClick={handleLoginButtonClick}>
+      <Button variant="contained" color="primary" className={classes.button}  onClick={handleLoginButtonClick}>
         Log in
       </Button>
       {loginTime && (
@@ -94,7 +93,7 @@ const LoginLogoutTimes = ({loginTime,setLoginTime,logoutTime,setLogoutTime,hours
       )}
     </div>
     <div>
-      <Button variant="contained" color="primary" className={classes.button} onClick={handleLogoutButtonClick}>
+      <Button variant="contained" color="primary" className={classes.button}  onClick={handleLogoutButtonClick}>
         Log out
       </Button>
       {logoutTime && (
@@ -106,7 +105,7 @@ const LoginLogoutTimes = ({loginTime,setLoginTime,logoutTime,setLogoutTime,hours
       )}
     </div>
     <div>
-      <Button variant="contained" color="primary" className={classes.button} onClick={calculateHoursWorked}>
+      <Button variant="contained" color="primary" className={classes.button}  onClick={calculateHoursWorked}>
        Hours Worked
       </Button>
       {hoursWorked && (
