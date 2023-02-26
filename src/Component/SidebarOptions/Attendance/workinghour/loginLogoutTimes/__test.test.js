@@ -1,7 +1,6 @@
 import React from "react";
 import { fireEvent, render,screen } from '@testing-library/react';
 import LoginLogoutTimes from "./LoginLogoutTimes";
-
 import firebase from 'firebase/compat';
 import { firestore } from '../../../../firebase'
 
