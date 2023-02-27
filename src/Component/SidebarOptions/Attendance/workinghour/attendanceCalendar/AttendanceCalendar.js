@@ -7,8 +7,8 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 const AttendanceCalendar = ({selectedDate,setSelectedDate,todo}) => {
 
   const localizer = momentLocalizer(moment);
-  const maxDate = new Date(); 
-
+    
+ 
     const handleDateChange = (date) => {
         const hy = moment(date).format('DD-MM-YYYY');
         setSelectedDate(hy)
@@ -19,12 +19,12 @@ const AttendanceCalendar = ({selectedDate,setSelectedDate,todo}) => {
       <Calendar
         localizer={localizer}
         events={todo}
-        startAccessor="start"
+        startAccessor={todo}
         endAccessor="end"
         defaultView="month"
         style={{ height: 500 }}
         selectable
-        value={handleDateChange}
+        onChange={handleDateChange}
       />
     </div>
   )

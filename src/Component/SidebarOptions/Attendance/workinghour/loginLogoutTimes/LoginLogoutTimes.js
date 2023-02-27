@@ -48,24 +48,24 @@ const LoginLogoutTimes = ({loginTime,setLoginTime,logoutTime,setLogoutTime,hours
     
   const classes = useStyles();
 
-    const handleLoginButtonClick = () => {
-        setLoginTime(moment().format('h:mm:ss a'));
+    const handleLoginButtonClick = ({start}) => {
+        setLoginTime(moment(start).format('DD.MM.YYYY h:mm:ss a'));
       };
     
-      const handleLogoutButtonClick = () => {
-        setLogoutTime(moment().format('h:mm:ss a'));
+      const handleLogoutButtonClick = ({end}) => {
+        setLogoutTime(moment(end).format('DD.MM.YYYY h:mm:ss a'));
       };
     
       const calculateHoursWorked = () => {
-        const login = moment(loginTime, 'h:mm:ss a');
-        const logout = moment(logoutTime, 'h:mm:ss a');
+        const login = moment(loginTime, 'DD.MM.YYYY h:mm:ss a');
+        const logout = moment(logoutTime, 'DD.MM.YYYY h:mm:ss a');
         const diff = moment.duration(logout.diff(login));
         const hours = Math.floor(diff.asHours()) + moment.utc(diff.asMilliseconds()).format(":mm:ss");
         setHoursWorked(hours);
 
         firestore.collection('workingHours').doc(`${selectedDate}`).set({
           loginTime,
-          logoutTime,
+         logoutTime,
           hoursWorked: hours,
           hoursLeft:hoursDifference,
          
