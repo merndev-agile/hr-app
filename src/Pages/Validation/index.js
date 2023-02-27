@@ -14,7 +14,7 @@ const schema = Yup.object().shape({
 });
 
 export default function ValidationPage() {
-    const { register, handleSubmit, formState: { errors }, setError, control, trigger } = useForm({
+    const { handleSubmit, formState: { errors }, control, trigger } = useForm({
         defaultValues: {
             name: false
         },

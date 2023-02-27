@@ -1,12 +1,33 @@
 import React from 'react';
-import Backdrop from './backdrop';
 import '../Menu/menu.css'
-import ToolBar from './toolbar';
-import { useNavigate, Link, Router } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
+
+
+
+
 function SideBar(props) {
     const navigate = useNavigate();
     // console.log("propsinSidebar-----", props)
     // console.log("props",props.employeeDetails.uid);
+  
+const handleLogout=()=>{
+   
+    
+    signOut(auth)
+            .then(async (res) => {
+                console.log(res);
+             
+                navigate('/')
+            })
+            .catch((err) => {
+                console.log(err.message);
+                // console.log(err.FirebaseError.firebase)
+              
+                // setErrorMsg((current) => ({ ...current, firebase: err.message }));
+            })
+}
 
     let listStyle = {
         color: 'white',
@@ -25,6 +46,8 @@ function SideBar(props) {
                 <li className='listStyle' onClick={() => navigate('/home/attendance')}>Attendence</li>
                 <li className='listStyle' onClick={() => navigate('/home/leave')}>Leave</li>
                 <li className='listStyle' onClick={() => navigate('/home/benifit')}>Benifit</li>
+                <li className='listStyle' onClick={() => navigate('/home/ListedHolidays')}>List of Holidays</li>
+                <li className='listStyle' onClick={handleLogout}>SignOut</li>
             </div>
         </div>
     )

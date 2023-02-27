@@ -1,0 +1,25 @@
+.left-section{
+  display: flex;
+    width: 70%;
+    justify-content: space-around;
+}
+.buttons-container{
+  display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* margin-bottom: 20px; */
+    gap: 25px;
+}
+
+
+.login-logout-times {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  
+  .time-field {
+    margin-left: 20px;
+  }

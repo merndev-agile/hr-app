@@ -14,7 +14,7 @@ function Signup() {
         // userEmail: '',
         // password: '',
         // companyImage: '',
-        // role: '',
+        role: 'User',
     });
     const [errorMsg, setErrorMsg] = useState('');
     const [signupButtonDisabled, setSignupButtonDisabled] = useState(false);
@@ -42,10 +42,8 @@ function Signup() {
                 setSignupButtonDisabled(false);
                 // setErrorMsg(err.message);
             })
-
     }
-
-
+        
     let btnStyle = {
         marginTop: '10px',
         marginBottom: '10px',
@@ -197,27 +195,14 @@ function Signup() {
 
                     />
 
-                    <select name="cars" id="cars"
-                        onChange={(e) => {
-                            console.log("selectedVal", e.target.value)
-                            setCredential((curr) => ({
-                                ...curr,
-                                role: e.target.value
-                            }))
-
-                        }}>
-
-                        <option value="Role">Role</option>
-                        <option value="Admin">Admin</option>
-                        <option value="User">User</option>
-                    </select>
+                    
 
 
 
                     <Button color='primary' variant="contained" type="submit" style={btnStyle} text='Sign up' />
                     <Typography>
                         Already have an account?
-                        <Link href='/login' >Sign in</Link>
+                        <Link href='/' >Sign in</Link>
                     </Typography>
                     {/* <button onClick={() => console.log("credential", credential)}>data</button> */}
 

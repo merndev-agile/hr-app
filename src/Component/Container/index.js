@@ -5,26 +5,18 @@ import { useLocation, useParams, Outlet, BrowserRouter, Link, Route, Routes } fr
 import { useEffect, useState } from 'react';
 import { FcMenu } from "react-icons/fc";
 
-// import EmployeeDetails from '../../Pages/employee';
-
 export default function Container() {
-
     const { state } = useLocation();
+    
     const [containerState, SetcontainerState] = useState({});
     const [isSideBarShow, setIsSideBarShow] = useState('false');
     const isToggleSideBar = () => {
-
         setIsSideBarShow((prevState) => !prevState)
-        console.log("isSideBarShow", isSideBarShow)
     }
 
-    console.log("state in container", state)
     useEffect(() => {
         SetcontainerState({ ...state });
-        console.log('uid in useEffect-----------', containerState);
-
     }, [])
-    console.log('uid outside useEffect-----------', containerState);
 
     return (
         <div>
@@ -37,7 +29,7 @@ export default function Container() {
                 </h1>
             </div>
             <div className='container'>
-                <div className='container-sidebar'>
+                <div >
                     {isSideBarShow && <SideBar employeeDetails={containerState} />}
                 </div>
                 <div className='container-component'>

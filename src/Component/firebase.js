@@ -6,7 +6,7 @@ import firebase from 'firebase/compat/app';
 import { getAuth } from "firebase/auth";
 import 'firebase/compat/firestore';
 import { getFirestore } from 'firebase/firestore';
-import { doc, setDoc, addDoc, collection,query, getDocs } from "firebase/firestore";
+import {  addDoc, collection,query, getDocs,updateDoc} from "firebase/firestore";
 
 
 /**
@@ -59,7 +59,7 @@ const createUserCollection = async (user, password, role) => {
  * @param {*} employee 
  */
 const createEmployeeCollection = async (employee) => {
-  console.log(employee)
+  console.log('employye==>',employee)
   let obj = { ...employee }
   console.log("emp_id",employee.uid)
   console.log("employee", employee.uid);
@@ -98,7 +98,7 @@ const createAttendanceDataCollection = async (attendanceData) => {
   let obj = { ...attendanceData };
   console.log("att", obj)
   const collection = firebase.firestore().collection('AttendanceData');
-  let response = await collection.doc().set({ ...obj }).catch((err) => {
+  let response = await (await collection.add()).set({ ...obj }).catch((err) => {
     console.log("error", err)
   })
   console.log("res", response)
@@ -125,6 +125,10 @@ const getDatafromUserCollection = async (setAllEmp) => {
   setAllEmp(data)
   
 }
+
+
+
+
 
 
 /**
@@ -156,6 +160,10 @@ const getSingleEmpInfo = async (uid,setPost) => {
   })
   console.log("single emp-----------",singleEmp);
   setPost(singleEmp)
+
+
+ 
+
   
 }
-export { app, auth, db, createUserCollection, getSingleEmpInfo,createEmployeeCollection, createLeaveDataCollection, createAttendanceDataCollection, getDatafromUserCollection };
+export { app, auth, db, firestore, createUserCollection,  getSingleEmpInfo,createEmployeeCollection, createLeaveDataCollection, createAttendanceDataCollection, getDatafromUserCollection};
