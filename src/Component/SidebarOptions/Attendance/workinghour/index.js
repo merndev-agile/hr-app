@@ -17,11 +17,11 @@ function WorkingHour() {
   const [secondsWorked, setSecondsWorked] = useState(null);
 
   const handleLoginTimeChange = () => {
-    setLoginTime(moment());
+    setLoginTime(moment().format('DD.MM.YYYY h:mm:ss a'));
   };
 
   const handleLogoutTimeChange = () => {
-    setLogoutTime(moment());
+    setLogoutTime(moment().format('DD.MM.YYYY h:mm:ss a'));
 
     if (loginTime) {
       const diffDuration = moment.duration(logoutTime.diff(loginTime));
@@ -75,11 +75,11 @@ function WorkingHour() {
       />
       <div>
         <button onClick={handleLoginTimeChange}>Set Login Time</button>
-        {loginTime && <span>{loginTime.format('MMMM Do YYYY, h:mm:ss a')}</span>}
+        {loginTime && <span>{loginTime.format('DD MM YYYY h:mm:ss a')}</span>}
       </div>
       <div>
         <button onClick={handleLogoutTimeChange}>Set Logout Time</button>
-        {logoutTime && <span>{logoutTime.format('MMMM Do YYYY, h:mm:ss a')}</span>}
+        {logoutTime && <span>{logoutTime.format('DD MM YYYY h:mm:ss a')}</span>}
       </div>
       {hoursWorked && <p>Hours Worked: {hoursWorked}h {minutesWorked}m {secondsWorked}s</p>}
     </div>
